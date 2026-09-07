@@ -2,7 +2,7 @@
 Contributors: nicholas-cod3r
 Tags: migration, sync, database, files
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPLv2 or later
@@ -38,10 +38,13 @@ Install from the GitHub Release nc-migration.zip asset. After that, WordPress ca
 
 == Changelog ==
 
+= 1.0.2 =
+* Declared compatibility with WordPress 7.1.
+
 = 1.0.1 =
 * First public GitHub Release.
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-First public release. Install from the GitHub Release ZIP.
+= 1.0.2 =
+Compatibility metadata updated for WordPress 7.1.
