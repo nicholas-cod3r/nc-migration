@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+.cursor/
+.vs/
+.fleet/
+.zed/
+nbproject/
+.settings/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+*.log
+*.swp
+*~

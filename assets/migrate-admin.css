@@ -1,0 +1,139 @@
+.migration-admin-wrap {
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	height: calc(100dvh - var(--wp-admin--admin-bar--height, 32px) - 75px);
+	max-height: calc(100dvh - var(--wp-admin--admin-bar--height, 32px) - 75px);
+	overflow: hidden;
+}
+
+.migration-admin-wrap > * {
+	flex-shrink: 0;
+}
+
+.migration-admin-top {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 1.5em;
+	align-items: start;
+	margin-bottom: 1em;
+}
+
+.migration-admin-controls h2 {
+	margin-top: 0;
+	padding-top: 8px;
+}
+
+.migration-toolbar {
+	margin-bottom: 1em;
+}
+
+.migration-params-div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75em;
+	margin-top: 8px;
+}
+
+.migration-params-column,
+#result {
+	border: 1px solid #c3c4c7;
+}
+
+.migration-params-column {
+	padding: 2px 10px 8px;
+	box-sizing: border-box;
+}
+
+.migration-params-column h3 {
+	margin: 0.4em 0 0.2em;
+	font-size: 13px;
+}
+
+.migration-params-column p {
+	margin: 0;
+	font-size: 13px;
+	word-break: break-all;
+}
+
+#migration-protect-export {
+	margin-left: 0.5em;
+	vertical-align: middle;
+	min-height: 0;
+	line-height: 1.8;
+	padding: 2px 10px;
+	font-size: 13px;
+}
+
+.migration-progress {
+	vertical-align: middle;
+	width: 200px;
+}
+
+.migration-log {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	flex-shrink: 1;
+	min-height: 0;
+}
+
+.migration-log h2 {
+	flex: 0 0 auto;
+}
+
+#result {
+	box-sizing: border-box;
+	flex: 1 1 auto;
+	min-height: min(calc(1.45em * 10 + 16px), 100%);
+	overflow: auto;
+	background: #fff;
+	padding: 8px 12px;
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 13px;
+	line-height: 1.45;
+}
+
+.migration-log-group {
+	margin: 0;
+}
+
+.migration-log-group__summary {
+	cursor: pointer;
+	list-style: none;
+	user-select: none;
+}
+
+.migration-log-group__summary::-webkit-details-marker {
+	display: none;
+}
+
+.migration-log-group__summary::before {
+	content: "▶";
+	display: inline-block;
+	width: 1.1em;
+	margin-right: 0.25em;
+	font-size: 0.75em;
+	transform: translateY(-1px);
+	transition: transform 0.1s ease;
+}
+
+.migration-log-group[open] > .migration-log-group__summary::before {
+	transform: rotate(90deg) translateX(-1px);
+}
+
+.migration-log-group__list {
+	padding: 0 0 0 1.35em;
+	margin: 0.15em 0 0.35em;
+}
+
+.migration-log-group__item {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+@media (max-width: 782px) {
+	.migration-admin-top {
+		grid-template-columns: 1fr;
+	}
+}

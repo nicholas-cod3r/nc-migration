@@ -1,0 +1,95 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Semver bump
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Bump version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+
+          current="$(sed -nE 's/^ \* Version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' nc-migration.php | head -n 1)"
+          if [ -z "${current}" ]; then
+            echo "Could not read Version from nc-migration.php" >&2
+            exit 1
+          fi
+
+          IFS=. read -r major minor patch <<< "${current}"
+
+          case "${BUMP}" in
+            major)
+              major=$((major + 1))
+              minor=0
+              patch=0
+              ;;
+            minor)
+              minor=$((minor + 1))
+              patch=0
+              ;;
+            patch)
+              patch=$((patch + 1))
+              ;;
+            *)
+              echo "Unknown bump: ${BUMP}" >&2
+              exit 1
+              ;;
+          esac
+
+          next="${major}.${minor}.${patch}"
+          echo "Bumping ${current} -> ${next} (${BUMP})"
+
+          sed -i -E "s/^( \* Version:)[[:space:]]*[0-9]+\.[0-9]+\.[0-9]+/\1 ${next}/" nc-migration.php
+          sed -i -E "s/^(Stable tag:)[[:space:]]*[0-9]+\.[0-9]+\.[0-9]+/\1 ${next}/" readme.txt
+
+          echo "current=${current}" >> "${GITHUB_OUTPUT}"
+          echo "next=${next}" >> "${GITHUB_OUTPUT}"
+          echo "tag=v${next}" >> "${GITHUB_OUTPUT}"
+
+      - name: Commit, tag, and push
+        env:
+          NEXT: ${{ steps.version.outputs.next }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add nc-migration.php readme.txt
+          git commit -m "Release ${NEXT}"
+          git tag "${TAG}"
+          git push origin HEAD:main
+          git push origin "${TAG}"
+
+      - name: Build plugin ZIP
+        run: git archive --format=zip --prefix=nc-migration/ -o nc-migration.zip HEAD
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.tag }}
+          files: nc-migration.zip
+          generate_release_notes: true

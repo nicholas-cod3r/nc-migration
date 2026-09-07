@@ -1,0 +1,143 @@
+# Copyright (C) 2026 nicholas-cod3r
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: NC Migration 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/nicholas-cod3r/nc-migration/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-07T12:57:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: NC Migration\n"
+"X-Domain: nc-migration\n"
+
+#: includes/class-migration.php:80
+#: views/admin-page.php:15
+msgid "Migrate site"
+msgstr ""
+
+#: includes/class-migration.php:81
+msgid "Migration"
+msgstr ""
+
+#: includes/class-migration.php:93
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-migration.php:169
+msgid ".htaccess is not writable."
+msgstr ""
+
+#: includes/class-migration.php:173
+msgid "Failed to read .htaccess."
+msgstr ""
+
+#: includes/class-migration.php:182
+msgid "Site root is not writable; cannot create .htaccess."
+msgstr ""
+
+#: includes/class-migration.php:203
+msgid "Failed to write .htaccess."
+msgstr ""
+
+#: includes/class-migration.php:221
+msgid "Failed to create .htaccess backup."
+msgstr ""
+
+#: includes/class-migration.php:278
+msgid "Do you really want to clear the results?"
+msgstr ""
+
+#: includes/class-migration.php:279
+#, php-format
+msgid ""
+"This will copy new and updated files from:\n"
+"  %1$s\n"
+"to:\n"
+"  %2$s\n"
+"\n"
+"WARNING! Existing files will be overwritten!\n"
+"Continue?"
+msgstr ""
+
+#: includes/class-migration.php:280
+#, php-format
+msgid ""
+"This will copy Wordpress related database tables from current instance to \n"
+"  '%s' database.\n"
+"WARNING! Already existing tables will be dropped irreversibly.\n"
+"Continue?"
+msgstr ""
+
+#: includes/class-migration.php:281
+msgid "Failed to update .htaccess."
+msgstr ""
+
+#: views/admin-page.php:19
+msgid "Warning: The migration-config.json and export.sql.gz are not blocked in .htaccess."
+msgstr ""
+
+#: views/admin-page.php:21
+msgid "Add rule"
+msgstr ""
+
+#: views/admin-page.php:28
+msgid "Options"
+msgstr ""
+
+#: views/admin-page.php:31
+msgid "Analyze files"
+msgstr ""
+
+#: views/admin-page.php:32
+msgid "Migrate files"
+msgstr ""
+
+#: views/admin-page.php:33
+msgid "Transfer database"
+msgstr ""
+
+#: views/admin-page.php:34
+msgid "Clear log"
+msgstr ""
+
+#: views/admin-page.php:37
+msgid "Progress:"
+msgstr ""
+
+#: views/admin-page.php:41
+msgid "Stop"
+msgstr ""
+
+#: views/admin-page.php:44
+msgid "Parameters"
+msgstr ""
+
+#: views/admin-page.php:45
+msgid "Selected target:"
+msgstr ""
+
+#: views/admin-page.php:50
+msgid "Source"
+msgstr ""
+
+#: views/admin-page.php:52
+#: views/admin-page.php:59
+msgid "Path:"
+msgstr ""
+
+#: views/admin-page.php:53
+#: views/admin-page.php:60
+msgid "URL:"
+msgstr ""
+
+#: views/admin-page.php:57
+msgid "Target"
+msgstr ""
+
+#: views/admin-page.php:66
+msgid "Log"
+msgstr ""

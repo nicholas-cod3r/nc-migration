@@ -1,0 +1,41 @@
+{
+	"_description01": "Migration configuration. Copy files and database from the source instance to another path/URL on the same server.",
+	"_description02": "Available under Tools → Migration for users with manage_options capability.",
+	"_description03": "Both source and target directories must contain wp-config.php (used to read DB credentials).",
+	"Source": {
+		"_description": "Physical path of the source site (wp-config.php location). Leave as '%SERVER_ROOT%' for the web root.",
+		"Path": "%SERVER_ROOT%"
+	},
+	"Targets": [
+		{
+			"Name": "Local copy",
+			"Path": "%SERVER_ROOT%/../copy",
+			"URL": "http://localhost/copy"
+		},
+		{
+			"Name": "Staging",
+			"Path": "%SERVER_ROOT%/../staging",
+			"URL": "https://staging.example.com"
+		}
+	],
+	"_description04": "Excluded file name patterns. Wildcards * and ? are allowed.",
+	"_description05": "These patterns apply in every directory.",
+	"ExcludedFiles": [
+		"wp-config.php",
+		".htaccess",
+		"googled*.html",
+		"BingSiteAuth.xml",
+		"robots.txt",
+		"migration-config.json",
+		"export.sql.gz"
+	],
+	"_description06": "Excluded folders. Wildcards are NOT supported.",
+	"_description07": "Paths are relative to the source path.",
+	"_description08": "Paths must end with /.",
+	"ExcludedFolders": [
+		"wp-content/cache/",
+		"wp-content/upgrade/",
+		"wp-content/upgrade-temp-backup/",
+		"wp-content/uploads/cache/"
+	]
+}
